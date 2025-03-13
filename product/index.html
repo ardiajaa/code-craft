@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeCraft | Source Code Berkualitas</title>
+    <link rel="icon" type="image/png" href="/img/icon.png" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet" />
+    <style>
+      :root {
+        --primary-color: #4361ee;
+        --secondary-color: #3f37c9;
+        --accent-color: #5e60ce;
+        --text-color: #333;
+        --bg-color: #fff;
+        --card-bg: #f8f9fa;
+        --border-color: #dee2e6;
+        --transition-speed: 0.4s;
+      }
+
+      .dark-mode {
+        --text-color: #f8f9fa;
+        --bg-color: #121212;
+        --card-bg: #1e1e1e;
+        --border-color: #2d2d2d;
+      }
+
+      body {
+        font-family: "Montserrat", "Poppins", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        transition: background-color var(--transition-speed) ease,
+          color var(--transition-speed) ease;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+      }
+
+      p,
+      .card-text {
+        font-family: "Montserrat", sans-serif;
+        line-height: 1.6;
+      }
+
+      .navbar {
+        background-color: var(--bg-color);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transition: all var(--transition-speed) ease;
+        padding: 15px 0;
+      }
+
+      .navbar-brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--primary-color) !important;
+        font-family: "Poppins", sans-serif;
+        letter-spacing: 0.5px;
+      }
+
+      .nav-link {
+        font-weight: 500;
+        color: var(--text-color) !important;
+        transition: all var(--transition-speed) ease;
+        position: relative;
+        padding: 8px 15px !important;
+        margin: 0 5px;
+        font-size: 0.95rem;
+      }
+
+      .nav-link:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--primary-color);
+        transition: width var(--transition-speed) ease;
+      }
+
+      .nav-link:hover:after,
+      .nav-link.active:after {
+        width: 100%;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--primary-color) !important;
+      }
+
+      .navbar-toggler {
+        border: none;
+        padding: 0;
+      }
+
+      .navbar-toggler:focus {
+        box-shadow: none;
+      }
+
+      .navbar-toggler-icon {
+        background-image: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .navbar-toggler-icon:before {
+        content: "\f0c9";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        color: var(--primary-color);
+        font-size: 1.5rem;
+      }
+
+      .hero-section {
+        padding: 100px 0 80px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        text-align: center;
+        border-radius: 0 0 50px 50px;
+        margin-bottom: 50px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-section:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgcGF0dGVyblRyYW5zZm9ybT0icm90YXRlKDQ1KSI+PHJlY3QgaWQ9InBhdHRlcm4tYmciIHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiBmaWxsPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMDUpIj48L3JlY3Q+PGNpcmNsZSBmaWxsPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiIGN4PSIyMCIgY3k9IjIwIiByPSIxIj48L2NpcmNsZT48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IGZpbGw9InVybCgjcGF0dGVybikiIGhlaWdodD0iMTAwJSIgd2lkdGg9IjEwMCUiPjwvcmVjdD48L3N2Zz4=");
+        opacity: 0.6;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-section h1 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .hero-section p.lead {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto;
+        opacity: 0.9;
+      }
+
+      .card {
+        border-radius: 15px;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        background-color: var(--card-bg);
+        transition: transform var(--transition-speed) ease,
+          box-shadow var(--transition-speed) ease,
+          background-color var(--transition-speed) ease;
+        height: 100%;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-img-top {
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        transition: transform var(--transition-speed) ease;
+      }
+
+      .card:hover .card-img-top {
+        transform: scale(1.05);
+      }
+
+      .card-body {
+        padding: 1.8rem;
+      }
+
+      .card-title {
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        color: var(--text-color);
+        font-size: 1.25rem;
+      }
+
+      .card-text {
+        color: var(--text-color);
+        opacity: 0.85;
+        font-size: 0.95rem;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        padding: 10px 20px;
+        font-weight: 500;
+        border-radius: 50px;
+        transition: all var(--transition-speed) ease;
+        box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+      }
+
+      .btn-primary:active {
+        transform: translateY(0);
+      }
+
+      .search-container {
+        margin-bottom: 35px;
+        position: relative;
+      }
+
+      .search-input {
+        border-radius: 50px;
+        padding: 15px 25px;
+        border: 1px solid var(--border-color);
+        width: 100%;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        transition: all var(--transition-speed) ease;
+        font-size: 1rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .search-input:focus {
+        box-shadow: 0 5px 20px rgba(67, 97, 238, 0.2);
+        border-color: var(--primary-color);
+        outline: none;
+      }
+
+      .search-icon {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--primary-color);
+        font-size: 1.2rem;
+      }
+
+      .category-filter {
+        margin-bottom: 35px;
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        gap: 12px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary-color) var(--card-bg);
+      }
+
+      .category-filter::-webkit-scrollbar {
+        height: 5px;
+      }
+
+      .category-filter::-webkit-scrollbar-track {
+        background: var(--card-bg);
+        border-radius: 10px;
+      }
+
+      .category-filter::-webkit-scrollbar-thumb {
+        background-color: var(--primary-color);
+        border-radius: 10px;
+      }
+
+      .category-btn {
+        padding: 10px 22px;
+        border-radius: 50px;
+        background-color: var(--card-bg);
+        color: var(--text-color);
+        border: 1px solid var(--border-color);
+        white-space: nowrap;
+        transition: all var(--transition-speed) ease;
+        font-weight: 500;
+        font-size: 0.9rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .category-btn.active,
+      .category-btn:hover {
+        background-color: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+        box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+      }
+
+      .price-tag {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 6px 18px;
+        border-radius: 50px;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+        box-shadow: 0 4px 10px rgba(67, 97, 238, 0.2);
+        width: fit-content;
+      }
+
+      .theme-toggle {
+        cursor: pointer;
+        padding: 8px 12px;
+        border-radius: 50px;
+        transition: all var(--transition-speed) ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+      }
+
+      .theme-toggle:hover {
+        background-color: rgba(67, 97, 238, 0.1);
+        transform: rotate(15deg);
+      }
+
+      footer {
+        background-color: var(--card-bg);
+        padding: 60px 0 30px;
+        margin-top: 80px;
+        border-top: 1px solid var(--border-color);
+        position: relative;
+      }
+
+      footer h5 {
+        font-weight: 600;
+        margin-bottom: 20px;
+        position: relative;
+        display: inline-block;
+      }
+
+      footer h5:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 40px;
+        height: 3px;
+        background-color: var(--primary-color);
+        border-radius: 10px;
+      }
+
+      footer a {
+        color: var(--text-color);
+        transition: color var(--transition-speed) ease;
+      }
+
+      footer a:hover {
+        color: var(--primary-color);
+      }
+
+      .social-icons a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background-color: rgba(67, 97, 238, 0.1);
+        color: var(--primary-color);
+        transition: all var(--transition-speed) ease;
+        margin-right: 10px;
+        text-decoration: none;
+      }
+
+      .social-icons a:hover {
+        background-color: var(--primary-color);
+        color: white;
+        transform: translateY(-3px);
+      }
+
+      .product-grid {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.6s forwards;
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 70px 0;
+        animation: fadeIn 0.5s forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 991.98px) {
+        .navbar-collapse {
+          position: fixed;
+          top: 0;
+          right: 0;
+          padding: 80px 30px 30px;
+          width: 280px;
+          height: 100vh;
+          z-index: 999;
+          background-color: var(--bg-color);
+          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+          transition: transform var(--transition-speed) ease;
+          transform: translateX(100%);
+          overflow-y: auto;
+        }
+
+        .navbar-collapse.show {
+          transform: translateX(0);
+        }
+
+        .navbar-nav {
+          margin-top: 20px;
+        }
+
+        .nav-item {
+          opacity: 0;
+          transform: translateX(20px);
+          transition: opacity 0.3s ease, transform 0.3s ease;
+          transition-delay: calc(var(--item-index) * 0.1s);
+        }
+
+        .navbar-collapse.show .nav-item {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        .navbar-toggler {
+          position: relative;
+          z-index: 1000;
+        }
+
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before {
+          content: "\f00d";
+        }
+
+        .nav-link {
+          padding: 12px 5px !important;
+          font-size: 1.1rem;
+          display: block;
+          margin: 10px 0;
+        }
+
+        .theme-toggle {
+          margin-top: 10px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-section {
+          padding: 80px 0 60px;
+          border-radius: 0 0 30px 30px;
+        }
+
+        .hero-section h1 {
+          font-size: 2.2rem;
+        }
+
+        .hero-section p.lead {
+          font-size: 1rem;
+        }
+
+        .card-img-top {
+          aspect-ratio: 1/1;
+        }
+
+        .search-input {
+          padding: 12px 20px;
+        }
+
+        .category-btn {
+          padding: 8px 18px;
+          font-size: 0.85rem;
+        }
+
+        footer {
+          padding: 40px 0 20px;
+          text-align: left;
+        }
+
+        footer h5:after {
+          left: 0;
+          transform: none;
+        }
+
+        .social-icons {
+          margin-bottom: 20px;
+        }
+
+        .card-body {
+          padding: 1.5rem;
+        }
+      }
+
+      .fade-in {
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+      }
+
+      .slide-in-right {
+        opacity: 0;
+        transform: translateX(30px);
+        animation: slideInRight 0.8s forwards;
+      }
+
+      .slide-in-left {
+        opacity: 0;
+        transform: translateX(-30px);
+        animation: slideInLeft 0.8s forwards;
+      }
+
+      .slide-in-up {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: slideInUp 0.8s forwards;
+      }
+
+      @keyframes slideInRight {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInLeft {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .delay-1 {
+        animation-delay: 0.1s;
+      }
+
+      .delay-2 {
+        animation-delay: 0.2s;
+      }
+
+      .delay-3 {
+        animation-delay: 0.3s;
+      }
+
+      .delay-4 {
+        animation-delay: 0.4s;
+      }
+
+      .delay-5 {
+        animation-delay: 0.5s;
+      }
+
+      .scroll-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+        box-shadow: 0 4px 15px rgba(67, 97, 238, 0.4);
+        z-index: 99;
+      }
+
+      .scroll-to-top.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .scroll-to-top:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(67, 97, 238, 0.5);
+      }
+
+      .reveal {
+        position: relative;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .text-muted {
+        color: var(--text-color) !important;
+      }
+
+      .me-2 {
+        height: 30px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand animate__animated animate__fadeIn" href="/">
+          <img src="/img/icon.png" alt="CodeCraft Logo" class="me-2">
+          CodeCraft
+        </a>
+        <button
+          class="navbar-toggler animate__animated animate__fadeIn"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item" style="--item-index: 0">
+              <a class="nav-link" href="/">Beranda</a>
+            </li>
+            <li class="nav-item" style="--item-index: 1">
+              <a class="nav-link active" href="/product/">Produk</a>
+            </li>
+            <li class="nav-item ms-lg-2" style="--item-index: 3">
+              <div class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="animate__animated animate__fadeInDown">
+            Kumpulan Source Code
+          </h1>
+          <p class="lead animate__animated animate__fadeInUp animate__delay-1s">
+            Temukan source code siap pakai & juga berkualitas untuk kebutuhan
+            pengembangan web Anda
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+      <!-- Search Bar -->
+      <div class="search-container slide-in-up delay-1 reveal">
+        <input
+          type="text"
+          class="search-input"
+          id="searchInput"
+          placeholder="Cari source code..." />
+        <i class="fas fa-search search-icon"></i>
+      </div>
+
+      <!-- Category Filter -->
+      <div class="category-filter slide-in-up delay-2 reveal">
+        <button class="category-btn active" data-category="all">Semua</button>
+        <button class="category-btn" data-category="website">Website</button>
+        <button class="category-btn" data-category="landing">
+          Landing Page
+        </button>
+        <button class="category-btn" data-category="mobile">Mobile</button>
+        <button class="category-btn" data-category="ecommerce">
+          E-Commerce
+        </button>
+        <button class="category-btn" data-category="admin">
+          Admin Dashboard
+        </button>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="row g-4 product-grid" id="productGrid">
+        <!-- Products will be dynamically loaded here -->
+      </div>
+
+      <!-- No Results Message -->
+      <div class="no-results d-none" id="noResults">
+        <i class="fas fa-search fa-3x mb-3 text-muted"></i>
+        <h3>Tidak Ada Produk Yang Ditemukan</h3>
+        <p class="text-muted">Coba Cari Kata Kunci Yang Lain Ya Bubb</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div
+            class="col-md-4 mb-4 mb-md-0 reveal"
+            data-aos="fade-up"
+            data-aos-delay="100">
+            <h5>CodeCraft</h5>
+            <p>
+              CodeCraft adalah platform yang menyediakan source code siap pakai
+              untuk website bisnis, Untuk tugas kuliah atau proyek pribadi.
+              Dengan fokus pada kemudahan, kecepatan, dan kualitas.
+            </p>
+          </div>
+          <div
+            class="col-md-4 mb-4 mb-md-0 reveal"
+            data-aos="fade-up"
+            data-aos-delay="200">
+            <h5>Tautan</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="/" class="text-decoration-none"
+                  ><i class="fas fa-chevron-right me-2 small"></i>Beranda</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="/product/" class="text-decoration-none"
+                  ><i class="fas fa-chevron-right me-2 small"></i>Produk</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div
+            class="col-md-4 reveal"
+            id="contact"
+            data-aos="fade-up"
+            data-aos-delay="300">
+            <h5>Hubungi Kami</h5>
+            <p>
+              <i class="fas fa-envelope me-2"></i>
+              <a
+                href="mailto:ardiantorizky7@gmail.com"
+                style="text-decoration: none"
+                >ardiantorizky7@gmail.com</a
+              >
+            </p>
+            <p>
+              <i class="fas fa-phone me-2"></i>
+              <a href="tel:+6285171613745" style="text-decoration: none"
+                >+62 851 1716 3745</a
+              >
+            </p>
+            <div class="social-icons mt-3">
+              <a
+                href="https://wa.me/6285171613745?text=Halo%20Kak%20Saya%20Mau%20Beli%20Source%20Code%20Website%20nya"
+                aria-label="WhatsApp"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+              <a
+                href="https://www.instagram.com/codecraft.techno"
+                aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/achmad-rizky-putra-ardianto/"
+                aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="https://www.youtube.com/@Arezaja" aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div
+          class="text-center text-md-start reveal"
+          data-aos="fade-up"
+          data-aos-delay="400">
+          <p>&copy; 2025 CodeCraft. Hak Cipta Dilindungi.</p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="scroll-to-top" id="scrollToTop">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        AOS.init({
+          duration: 800,
+          easing: "ease-in-out",
+          once: true,
+        });
+
+        function reveal() {
+          var reveals = document.querySelectorAll(".reveal");
+
+          for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            var elementVisible = 150;
+
+            if (elementTop < windowHeight - elementVisible) {
+              reveals[i].classList.add("active");
+            }
+          }
+        }
+
+        window.addEventListener("scroll", reveal);
+        reveal();
+
+        const scrollToTopBtn = document.getElementById("scrollToTop");
+
+        window.addEventListener("scroll", function () {
+          if (window.pageYOffset > 300) {
+            scrollToTopBtn.classList.add("active");
+          } else {
+            scrollToTopBtn.classList.remove("active");
+          }
+        });
+
+        scrollToTopBtn.addEventListener("click", function () {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+      });
+
+      const products = [
+        {
+          id: 1,
+          name: "VCard Portfolio",
+          description:
+            "Template website yang dirancang khusus untuk menampilkan informasi pribadi, resume, portfolio, dan kontak anda secara profesional dan ringkas.",
+          originalPrice: "Rp 39.999",
+          price: "Rp 29.999",
+          discount: true,
+          discountPercent: 25,
+          image: "/img/product1.jpg",
+          category: "website",
+          href: "https://example.com/website-umkm-premium",
+        },
+        {
+          id: 2,
+          name: "Kafe Modern & Responsif",
+          description:
+            "Website untuk menampilkan informasi mengenai sebuah kafe atau restoran milik Anda.",
+          originalPrice: "Rp 50.000",
+          price: "Rp 35.000",
+          discount: true,
+          discountPercent: 30,
+          image: "/img/product1.jpg",
+          category: "ecommerce",
+          href: "https://example.com/e-commerce-toko-online",
+        },
+        {
+          id: 3,
+          name: "Landing Page Bisnis",
+          description:
+            "Template landing page profesional untuk meningkatkan konversi bisnis Anda.",
+          originalPrice: "Rp 550.000",
+          price: "Rp 450.000",
+          discount: true,
+          discountPercent: 18,
+          image: "/img/product1.jpg",
+          category: "landing",
+          href: "https://example.com/landing-page-bisnis",
+        },
+        {
+          id: 4,
+          name: "Admin Dashboard",
+          description:
+            "Panel admin dengan UI/UX modern untuk mengelola website atau aplikasi Anda.",
+          originalPrice: "Rp 950.000",
+          price: "Rp 850.000",
+          discount: true,
+          discountPercent: 11,
+          image: "/img/product1.jpg",
+          category: "admin",
+          href: "https://example.com/admin-dashboard",
+        },
+        {
+          id: 5,
+          name: "Aplikasi Mobile Toko",
+          description:
+            "Source code aplikasi mobile untuk toko online dengan React Native.",
+          originalPrice: "Rp 1.800.000",
+          price: "Rp 1.500.000",
+          discount: true,
+          discountPercent: 17,
+          image: "/img/product1.jpg",
+          category: "mobile",
+          href: "https://example.com/aplikasi-mobile-toko",
+        },
+        {
+          id: 6,
+          name: "Website Portfolio",
+          description:
+            "Template website portfolio untuk menampilkan karya dan keahlian Anda.",
+          originalPrice: "Rp 650.000",
+          price: "Rp 550.000",
+          discount: true,
+          discountPercent: 15,
+          image: "/img/product1.jpg",
+          category: "website",
+          href: "https://example.com/website-portfolio",
+        },
+        {
+          id: 7,
+          name: "Sistem Manajemen Sekolah",
+          description:
+            "Aplikasi web untuk manajemen sekolah dengan fitur absensi, nilai, dan laporan.",
+          originalPrice: "Rp 2.500.000",
+          price: "Rp 2.000.000",
+          discount: true,
+          discountPercent: 20,
+          image: "/img/product1.jpg",
+          category: "website",
+          href: "https://example.com/sistem-manajemen-sekolah",
+        },
+        {
+          id: 8,
+          name: "Aplikasi Kasir",
+          description:
+            "Source code aplikasi kasir dengan fitur manajemen stok dan laporan penjualan.",
+          originalPrice: "Rp 1.100.000",
+          price: "Rp 900.000",
+          discount: true,
+          discountPercent: 18,
+          image: "/img/product1.jpg",
+          category: "website",
+          href: "https://example.com/aplikasi-kasir",
+        },
+      ];
+
+      function displayProducts(productsToShow) {
+        const productGrid = document.getElementById("productGrid");
+        const noResults = document.getElementById("noResults");
+
+        productGrid.innerHTML = "";
+
+        if (productsToShow.length === 0) {
+          productGrid.classList.add("d-none");
+          noResults.classList.remove("d-none");
+          return;
+        }
+
+        productGrid.classList.remove("d-none");
+        noResults.classList.add("d-none");
+
+        productsToShow.forEach((product, index) => {
+          const delay = index * 0.1;
+          const productCard = `
+                    <div class="col-md-6 col-lg-3" style="animation-delay: ${delay}s">
+                        <div class="card h-100 product-card">
+                            <div class="position-relative">
+                                <img src="${
+                                  product.image
+                                }" class="card-img-top" alt="${product.name}">
+                                ${
+                                  product.discount
+                                    ? `<div class="discount-ribbon">
+                                        <span>-${product.discountPercent}%</span>
+                                    </div>`
+                                    : ""
+                                }
+                            </div>
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">${product.name}</h5>
+                                <p class="card-text">${product.description}</p>
+                                <div class="price-container mt-auto mb-3">
+                                    ${
+                                      product.discount
+                                        ? `<div class="original-price-wrapper">
+                                            <span class="original-price">${product.originalPrice}</span>
+                                        </div>`
+                                        : ""
+                                    }
+                                    <div class="current-price-wrapper">
+                                        <span class="current-price">${
+                                          product.price
+                                        }</span>
+                                    </div>
+                                </div>
+                                <a href="${
+                                  product.href
+                                }" class="btn btn-primary w-100">Beli Sekarang <i class="fas fa-shopping-cart ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+          productGrid.innerHTML += productCard;
+        });
+
+        if (!document.getElementById("discount-styles")) {
+          const styleElement = document.createElement("style");
+          styleElement.id = "discount-styles";
+          styleElement.innerHTML = `
+                    .product-card {
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                        border-radius: 12px;
+                        overflow: hidden;
+                        border: none;
+                        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+                    }
+                    
+                    .product-card:hover {
+                        transform: translateY(-5px);
+                        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+                    }
+                    
+                    .discount-ribbon {
+                        position: absolute;
+                        top: 10px;
+                        right: 10px;
+                        background: linear-gradient(135deg, #ff5e62, #ff9966);
+                        color: white;
+                        padding: 8px 12px;
+                        font-weight: bold;
+                        border-radius: 25px;
+                        box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+                        animation: pulse 1.5s infinite;
+                    }
+                    
+                    @keyframes pulse {
+                        0% { transform: scale(1); }
+                        50% { transform: scale(1.05); }
+                        100% { transform: scale(1); }
+                    }
+                    
+                    .price-container {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 5px;
+                    }
+                    
+                    .original-price-wrapper {
+                        position: relative;
+                    }
+                    
+                    .original-price {
+                        color: #999;
+                        font-size: 0.9rem;
+                        position: relative;
+                    }
+                    
+                    .original-price:after {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        width: 100%;
+                        height: 2px;
+                        background-color: #ff5e62;
+                        transform: rotate(-5deg);
+                    }
+                    
+                    .current-price {
+                        font-size: 1.3rem;
+                        font-weight: 700;
+                        color: #4361ee;
+                    }
+                    
+                    .card-title {
+                        font-size: 1.1rem;
+                        font-weight: 600;
+                        margin-bottom: 10px;
+                        color: var(--text-color);
+                    }
+                    
+                    .card-text {
+                        color: var(--text-color);
+                        opacity: 0.8;
+                        font-size: 0.9rem;
+                        margin-bottom: 15px;
+                    }
+                    
+                    .btn-primary {
+                        background: linear-gradient(to right, #4361ee, #3f37c9);
+                        border: none;
+                        border-radius: 30px;
+                        padding: 10px 20px;
+                        font-weight: 600;
+                        transition: all 0.3s ease;
+                    }
+                    
+                    .btn-primary:hover {
+                        background: linear-gradient(to right, #3f37c9, #4361ee);
+                        transform: translateY(-2px);
+                        box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+                    }
+                `;
+          document.head.appendChild(styleElement);
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        displayProducts(products);
+
+        const categoryButtons = document.querySelectorAll(".category-btn");
+        categoryButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            categoryButtons.forEach((btn) => btn.classList.remove("active"));
+            this.classList.add("active");
+
+            const category = this.getAttribute("data-category");
+            const searchTerm = document
+              .getElementById("searchInput")
+              .value.toLowerCase();
+
+            filterProducts(category, searchTerm);
+          });
+        });
+
+        const searchInput = document.getElementById("searchInput");
+        searchInput.addEventListener("input", function () {
+          const searchTerm = this.value.toLowerCase();
+          const activeCategory = document
+            .querySelector(".category-btn.active")
+            .getAttribute("data-category");
+
+          filterProducts(activeCategory, searchTerm);
+        });
+
+        const themeToggle = document.getElementById("themeToggle");
+        const icon = themeToggle.querySelector("i");
+
+        if (localStorage.getItem("darkMode") === "enabled") {
+          document.body.classList.add("dark-mode");
+          icon.classList.remove("fa-moon");
+          icon.classList.add("fa-sun");
+        }
+
+        themeToggle.addEventListener("click", function () {
+          document.body.classList.toggle("dark-mode");
+
+          if (document.body.classList.contains("dark-mode")) {
+            icon.classList.remove("fa-moon");
+            icon.classList.add("fa-sun");
+            localStorage.setItem("darkMode", "enabled");
+          } else {
+            icon.classList.remove("fa-sun");
+            icon.classList.add("fa-moon");
+            localStorage.setItem("darkMode", "disabled");
+          }
+        });
+      });
+
+      function filterProducts(category, searchTerm) {
+        let filteredProducts = products;
+
+        if (category !== "all") {
+          filteredProducts = filteredProducts.filter(
+            (product) => product.category === category
+          );
+        }
+
+        if (searchTerm) {
+          filteredProducts = filteredProducts.filter(
+            (product) =>
+              product.name.toLowerCase().includes(searchTerm) ||
+              product.description.toLowerCase().includes(searchTerm)
+          );
+        }
+        displayProducts(filteredProducts);
+      }
+    </script>
+  </body>
+</html>
