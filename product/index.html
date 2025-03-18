@@ -657,6 +657,135 @@
         height: 30px;
       }
 
+/* Testimoni Section */
+.testimonials {
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.testimonial-wrapper {
+  display: flex;
+  gap: 15px; /* Jarak antar card dikurangi */
+  width: max-content; /* Agar wrapper mengikuti lebar total testimoni */
+  transition: transform 0.5s ease;
+}
+
+.testimonial-card {
+  flex: 0 0 250px; /* Lebar card diperkecil */
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 15px;
+  padding: 15px; /* Padding dikurangi */
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-img {
+  width: 60px; /* Ukuran gambar diperkecil */
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 10px; /* Jarak bawah gambar dikurangi */
+  object-fit: cover;
+}
+
+.testimonial-card h5 {
+  font-size: 1rem; /* Ukuran font nama diperkecil */
+  margin-bottom: 5px; /* Jarak bawah nama dikurangi */
+}
+
+.testimonial-card p {
+  font-size: 0.9rem; /* Ukuran font testimoni diperkecil */
+  margin-bottom: 0; /* Hilangkan margin bawah */
+}
+
+/* Responsive untuk tablet dan desktop */
+@media (min-width: 768px) {
+  .testimonial-card {
+    flex: 0 0 300px; /* Lebar card sedikit diperbesar untuk tablet */
+  }
+}
+
+@media (min-width: 992px) {
+  .testimonial-card {
+    flex: 0 0 350px; /* Lebar card diperbesar untuk desktop */
+  }
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+}
+
+.scroll-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+.scroll-left {
+  left: -20px;
+}
+
+.scroll-right {
+  right: -20px;
+}
+
+.accordion-item {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.accordion-button {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  font-weight: 600;
+  border: none;
+  box-shadow: none;
+}
+
+.accordion-button::after {
+  background-image: none; /* Hapus gambar default Bootstrap */
+  font-family: "Font Awesome 6 Free"; /* Gunakan Font Awesome */
+  content: "\f078"; /* Ikon panah bawah */
+  font-weight: 900;
+  color: var(--primary-color); /* Warna ikon sesuai dark mode */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.accordion-button:not(.collapsed)::after {
+  content: "\f077"; /* Ikon panah atas saat terbuka */
+  color: var(--primary-color); /* Warna ikon saat terbuka */
+}
+
+.accordion-body {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
     </style>
   </head>
   <body>
@@ -751,6 +880,95 @@
       </div>
     </div>
 
+<!-- Testimoni Section -->
+<section class="testimonials my-5">
+  <div class="container">
+    <h3 class="text-center mb-4">Apa Kata Mereka?</h3>
+    <div class="testimonial-container">
+      <div class="testimonial-wrapper">
+        <!-- Testimoni 1 -->
+        <div class="testimonial-card">
+          <img src="/img/user1.jpg" alt="User 1" class="testimonial-img">
+          <h5>John Doe</h5>
+          <p class="text-muted">"Template-nya sangat mudah digunakan dan desainnya modern. Sangat membantu!"</p>
+        </div>
+        <!-- Testimoni 2 -->
+        <div class="testimonial-card">
+          <img src="/img/user2.jpg" alt="User 2" class="testimonial-img">
+          <h5>Jane Smith</h5>
+          <p class="text-muted">"Source code-nya lengkap dan dokumentasinya jelas. Recommended banget!"</p>
+        </div>
+        <!-- Testimoni 3 -->
+        <div class="testimonial-card">
+          <img src="/img/user3.jpg" alt="User 3" class="testimonial-img">
+          <h5>Alice</h5>
+          <p class="text-muted">"Saya bisa menyelesaikan proyek saya lebih cepat berkat template ini."</p>
+        </div>
+        <!-- Testimoni 4 -->
+        <div class="testimonial-card">
+          <img src="/img/user4.jpg" alt="User 4" class="testimonial-img">
+          <h5>Bob Johnson</h5>
+          <p class="text-muted">"Dukungan pelanggannya sangat responsif dan membantu."</p>
+        </div>
+        <!-- Testimoni 5 -->
+        <div class="testimonial-card">
+          <img src="/img/user5.jpg" alt="User 5" class="testimonial-img">
+          <h5>Charlie Brown</h5>
+          <p class="text-muted">"Harga terjangkau dengan kualitas yang sangat baik."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq my-5">
+  <div class="container">
+    <h3 class="text-center mb-4">Pertanyaan yang Sering Diajukan</h3>
+    <div class="accordion" id="faqAccordion">
+      <!-- FAQ 1 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Apakah source code ini bisa dikustomisasi?
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Ya, source code ini dirancang untuk mudah dikustomisasi sesuai kebutuhan Anda.
+          </div>
+        </div>
+      </div>
+      <!-- FAQ 2 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Apakah ada dukungan setelah pembelian?
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Tentu saja! Kami menyediakan dukungan melalui email dan WhatsApp untuk membantu Anda.
+          </div>
+        </div>
+      </div>
+      <!-- FAQ 3 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Bagaimana cara mendapatkan update source code?
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Anda akan mendapatkan notifikasi via email jika ada update source code.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
     <!-- Footer -->
     <footer>
       <div class="container">
@@ -844,6 +1062,59 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
+
+let scrollInterval;
+let isPaused = false;
+
+function startAutoScroll() {
+  const container = document.querySelector(".testimonial-container");
+  const wrapper = document.querySelector(".testimonial-wrapper");
+  const scrollAmount = 1; // Kecepatan scroll (bisa disesuaikan)
+  const cardWidth = document.querySelector(".testimonial-card").offsetWidth + 20; // Lebar card + gap
+
+  scrollInterval = setInterval(() => {
+    if (!isPaused) {
+      const currentScroll = container.scrollLeft;
+      const maxScroll = wrapper.scrollWidth - container.clientWidth;
+
+      if (currentScroll >= maxScroll) {
+        // Jika sudah di ujung, kembali ke awal
+        container.scrollTo({ left: 0, behavior: "auto" });
+      } else {
+        // Scroll ke kanan
+        container.scrollBy({ left: scrollAmount, behavior: "auto" });
+      }
+    }
+  }, 20); // Interval scroll (bisa disesuaikan)
+}
+
+function stopAutoScroll() {
+  isPaused = true;
+}
+
+function resumeAutoScroll() {
+  isPaused = false;
+}
+
+// Mulai scroll otomatis saat halaman dimuat
+document.addEventListener("DOMContentLoaded", () => {
+  startAutoScroll();
+});
+
+// Berhenti scroll saat testimoni di-klik
+const testimonialCards = document.querySelectorAll(".testimonial-card");
+testimonialCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    stopAutoScroll();
+  });
+});
+
+// Lanjutkan scroll saat mouse meninggalkan testimoni
+const testimonialContainer = document.querySelector(".testimonial-container");
+testimonialContainer.addEventListener("mouseleave", () => {
+  resumeAutoScroll();
+});
+
       document.addEventListener("DOMContentLoaded", function () {
         AOS.init({
           duration: 800,
