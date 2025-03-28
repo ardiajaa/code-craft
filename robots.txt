@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://codecraft-techno.vercel.app/sitemap.xml
