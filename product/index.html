@@ -771,6 +771,22 @@
         background-color: var(--card-bg);
         color: var(--text-color);
       }
+
+      .nav-item-0 {
+        --item-index: 0;
+      }
+      
+      .nav-item-1 {
+        --item-index: 1;
+      }
+      
+      .nav-item-3 {
+        --item-index: 3;
+      }
+      
+      .animate-delay {
+        animation-delay: var(--delay, 0.1s);
+      }
     </style>
   </head>
   <body>
@@ -793,13 +809,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item" style="--item-index: 0">
+            <li class="nav-item nav-item-0">
               <a class="nav-link" href="/">Beranda</a>
             </li>
-            <li class="nav-item" style="--item-index: 1">
+            <li class="nav-item nav-item-1">
               <a class="nav-link active" href="/product/">Produk</a>
             </li>
-            <li class="nav-item ms-lg-2" style="--item-index: 3">
+            <li class="nav-item ms-lg-2 nav-item-3">
               <div class="theme-toggle" id="themeToggle">
                 <i class="fas fa-moon"></i>
               </div>
@@ -1040,17 +1056,11 @@
             <h5>Hubungi Kami</h5>
             <p>
               <i class="fas fa-envelope me-2"></i>
-              <a
-                href="mailto:ardiantorizky7@gmail.com"
-                style="text-decoration: none"
-                >ardiantorizky7@gmail.com</a
-              >
+              <a href="mailto:ardiantorizky7@gmail.com" class="text-decoration-none">ardiantorizky7@gmail.com</a>
             </p>
             <p>
               <i class="fas fa-phone me-2"></i>
-              <a href="tel:+6285171613745" style="text-decoration: none"
-                >+62 851 1716 3745</a
-              >
+              <a href="tel:+6285171613745" class="text-decoration-none">+62 851 1716 3745</a>
             </p>
             <div class="social-icons mt-3">
               <a
@@ -1259,7 +1269,7 @@
         productsToShow.forEach((product, index) => {
           const delay = index * 0.1;
           const productCard = `
-                    <div class="col-md-6 col-lg-3" style="animation-delay: ${delay}s">
+                    <div class="col-md-6 col-lg-3 animate-delay">
                         <div class="card h-100 product-card">
                             <div class="position-relative">
                                 <img src="${
